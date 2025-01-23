@@ -20,14 +20,10 @@ class RedditReader:
                 submissions = self.reddit.subreddit(subreddit).new(limit=limit)
             case 'top':
                 submissions = self.reddit.subreddit(subreddit).top(limit=limit)
-            case 'random':
-                self.reddit.subreddit(subreddit).random(limit=limit)
-            case 'controversial':
-                self.reddit.subreddit(subreddit).controversial(limit=limit)
             case 'rising':
                 self.reddit.subreddit(subreddit).rising(limit=limit)
             case _:
-                raise ValueError("Invalid topic. Choose from: (hot, new, top, random, rising, controversial)")
+                raise ValueError("Invalid topic. Choose from: (hot, new, top, rising)")
         self.submissions = [submission for submission in submissions]
 
     def __len__(self):
